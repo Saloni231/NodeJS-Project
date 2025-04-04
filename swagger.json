@@ -1,0 +1,298 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Swagger Documentation for NodeJS API",
+        "version": "1.0.0",
+        "title": "API",
+        "contact": {
+            "email": "ghagsaloni2001@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "Schemes": [
+        "http"
+    ],
+    "host": "localhost:3001",
+    "basePath": "/",
+    "paths": {
+        "/products?page=&recordPerPage=": {
+            "get": {
+                "summary": "Fetch All Products",
+                "description": "Fetch Products",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/authorization"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "type": "number",
+                        "description": "Page Number"
+                    },
+                    {
+                        "in": "query",
+                        "name": "recordPerPage",
+                        "type": "number",
+                        "description": "Records to be fetched per page"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully Fetched",
+                        "schema": {
+                            "$ref": "#/definitions/ProductsSuccess"
+                        }
+                    },
+                    "401": {
+                        "description": "Data Fetch Failed",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/products/{category}?page=&recordPerPage=": {
+            "get": {
+                "summary": "Fetch Products By Category",
+                "description": "Fetch Products By Category",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/authorization"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "category",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/params"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "type": "number",
+                        "description": "Page Number"
+                    },
+                    {
+                        "in": "query",
+                        "name": "recordPerPage",
+                        "type": "number",
+                        "description": "Records to be fetched per page"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully Fetched",
+                        "schema": {
+                            "$ref": "#/definitions/ProductsSuccess"
+                        }
+                    },
+                    "401": {
+                        "description": "Data Fetch Failed",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/products/{category}/{name}": {
+            "get": {
+                "summary": "Fetch Particular Product",
+                "description": "Fetch Particular Product",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/authorization"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "category",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/category"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/name"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully Fetched",
+                        "schema": {
+                            "$ref": "#/definitions/ProductsSuccess"
+                        }
+                    },
+                    "401": {
+                        "description": "Data Fetch Failed",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "summary": "Login",
+                "description": "Login with email and password",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully Fetched",
+                        "schema": {
+                            "$ref": "#/definitions/loginSuccess"
+                        }
+                    },
+                    "401": {
+                        "description": "Data Fetch Failed",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "authorization": {
+            "type": "string"
+        },
+        "category": {
+            "type": "number"
+        },
+        "name": {
+            "type": "string"
+        },
+        "login": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "ProductsSuccess": {
+            "type": "object",
+            "properties": {
+                "products": {
+                    "type": "object",
+                    "properties": {
+                        "_id": {
+                            "type": "string"
+                        },
+                        "category": {
+                            "type": "number"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "price": {
+                            "type": "string"
+                        },
+                        "images": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "loginSuccess": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "type": "string"
+                },
+                "user": {
+                    "type": "object",
+                    "properties": {
+                        "_id": {
+                            "type": "string"
+                        },
+                        "firstName": {
+                            "type": "string"
+                        },
+                        "lastName": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string"
+                        },
+                        "mobile": {
+                            "type": "string"
+                        },
+                        "password": {
+                            "type": "string"
+                        },
+                        "product": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Error": {
+            "type": "string"
+        }
+    }
+}

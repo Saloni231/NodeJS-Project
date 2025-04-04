@@ -1,0 +1,58 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 1%;
+    line-height: 1.7;
+    background-color: #184D47;
+}
+
+.navbar-dark .navbar-brand {
+    color: #faeda9;
+}
+
+.navbar-dark .navbar-brand,.navbar-dark .navbar-nav .nav-link {
+    padding: auto;
+    padding-left: 1.8rem;
+    color: #faeda9;
+}
+
+.navbar-dark .navbar-nav .nav-link-signup {
+    padding: auto;
+    padding: 0.5rem;
+    background-color: #A67C00;
+    color: #184D47;
+    border: #A67C00;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: #faeda9;
+}
+
+.index-title {
+    margin: auto;
+    text-align: center;
+    color: #faeda9;
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+p{
+    font-family: 'Times New Roman', Times, serif;
+    padding: 0 10% 0 10%;
+    font-size: 1.3rem;
+}
